@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    ports:
+      - "5432:5432" # Мапирање на локалната порта 5432 до портата на PostgreSQL
+    environment:
+      POSTGRES_USER: wp    # Корисничко име
+      POSTGRES_PASSWORD: wp123  # Лозинка
+      POSTGRES_DB: events        # Име на базата
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Зачувување на податоците при рестартирање
+
+volumes:
+  postgres_data:
